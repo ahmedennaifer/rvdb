@@ -1,7 +1,7 @@
 ## Core features 
 - [x] Vector struct with dimension checks
 - [x] Euclidean distance
-- [ ] Cosine similarity
+- [x] Cosine similarity
 - [ ] Vector normalization
 - [ ] Vector operation tests
 

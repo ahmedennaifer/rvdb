@@ -18,5 +18,11 @@ pub fn dot_product(v1: &Vects, v2: &Vects) -> f32 {
 }
 
 pub fn cosine_similarity(v1: &Vects, v2: &Vects) -> f32 {
-    1.0 // TODO: Implement
+    let dot = dot_product(v1, v2);
+
+    let norm1 = v1.embeddings.iter().map(|x| x * x).sum::<f32>().sqrt();
+
+    let norm2 = v2.embeddings.iter().map(|x| x * x).sum::<f32>().sqrt();
+
+    dot / (norm1 * norm2)
 }

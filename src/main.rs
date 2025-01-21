@@ -2,7 +2,7 @@ mod metrics;
 mod store;
 mod vector;
 
-use crate::metrics::{dot_product, euclidean_distance};
+use crate::metrics::*;
 use crate::vector::Vects;
 
 fn main() {
@@ -59,6 +59,11 @@ fn main() {
 
     let distance = euclidean_distance(&store[0], &store[1]);
     let dot_prod = dot_product(&store[0], &store[1]);
+    let cosine_dist = cosine_similarity(&store[0], &store[1]);
+    println!("DB: {:?}", &store);
     println!("euc dist: {distance:?}");
+    println!("cos dist: {cosine_dist:?}");
     println!("dot: {dot_prod:?}");
+    let v = &store.iter().find(|v| v.id == 2).unwrap();
+    // println!("{v:?}");
 }

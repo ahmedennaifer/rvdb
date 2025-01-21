@@ -1,3 +1,4 @@
+use crate::metrics::cosine_similarity;
 use crate::vector::Vects;
 use std::{borrow::Borrow, error::Error};
 
@@ -35,5 +36,18 @@ impl VectorStore {
         self.vectors.remove(hit);
 
         Ok(())
+    }
+    pub fn k_nearest_neighbor(&self, embedding: &Vects, top_k: i32) -> Vec<(f32, Vects)> {
+        // loop through all vects
+        // calc cosine_sim of input embds and vects
+        // return top N vects with score
+        let mut res = Vec::new();
+        for vec in &self.vectors {
+            let sim = cosine_similarity(vec, embedding);
+            res.push((sim, vec.clone()));
+        }
+        res.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
+        res.truncate(top_k as usize);
+        res
     }
 }

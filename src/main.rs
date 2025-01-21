@@ -66,16 +66,23 @@ fn main() {
     let dot_prod = dot_product(vec1, vec2);
     let cosine_sim = cosine_similarity(vec1, vec2);
 
-    println!("euc dist: {distance:?}");
-    println!("cos dist: {cosine_sim:?}");
-    println!("dot: {dot_prod:?}");
-
-    println!("=============BEFORE RM=============");
-
-    println!("{store:?}");
-    store.remove_by_id(2).unwrap();
-
-    println!("=============AFTER RM==============");
-
-    println!("{store:?}");
+    // println!("euc dist: {distance:?}");
+    // println!("cos dist: {cosine_sim:?}");
+    // println!("dot: {dot_prod:?}");
+    let v3 = vec![
+        -0.363884,
+        -0.2468885,
+        0.0085148,
+        0.236876295,
+        -0.7862131,
+        0.9383637,
+        -0.5458427652462112,
+        0.80299112604,
+        -0.1823566571,
+        0.352046744164,
+    ];
+    let v3_chunk = "Lorem ipsum".to_string();
+    let query = Vects::new(&store, 10, v3, v3_chunk).unwrap();
+    let res = store.k_nearest_neighbor(&query, 2);
+    println!("{res:?}");
 }

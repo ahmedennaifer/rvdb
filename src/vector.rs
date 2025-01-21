@@ -1,6 +1,6 @@
 use crate::store::*;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Vects {
     pub chunk: String,
     pub id: i32,

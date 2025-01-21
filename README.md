@@ -6,10 +6,10 @@
 - [ ] Vector operation tests
 
 ### In mem storage
-- [X] Vector storage with IDs (kinda, very basic)
-- [ ] Insert with ID generation (same)
+- [x] Vector storage with IDs (kinda, very basic)
+- [x] Insert with ID generation (same)
 - [ ] Delete by ID
-- [ ] Retrieve by ID
+- [x] Retrieve by ID
 - [ ] CRUD tests
 
 ### Search

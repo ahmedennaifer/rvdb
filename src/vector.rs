@@ -1,3 +1,5 @@
+use crate::store::*;
+
 #[derive(Debug)]
 pub struct Vects {
     pub chunk: String,
@@ -8,7 +10,7 @@ pub struct Vects {
 
 impl Vects {
     pub fn new(
-        store: &Vec<Vects>,
+        store: &VectorStore,
         dimensions: i32,
         embeddings: Vec<f32>,
         chunk: String,
@@ -28,13 +30,13 @@ impl Vects {
         }
         Ok(Self {
             chunk,
-            id: Self::generate_new_id(store),
+            id: Self::generate_new_id(&store),
             dimensions,
             embeddings,
         })
     }
 
-    fn generate_new_id(store: &Vec<Vects>) -> i32 {
-        (store.len() + 1) as i32
+    fn generate_new_id(store: &VectorStore) -> i32 {
+        (store.vectors.len() + 1) as i32
     }
 }

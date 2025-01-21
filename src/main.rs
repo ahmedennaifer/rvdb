@@ -3,12 +3,15 @@ mod store;
 mod vector;
 
 use crate::metrics::*;
+use crate::store::VectorStore;
 use crate::vector::Vects;
 
 fn main() {
-    let mut store: Vec<Vects> = Vec::new();
+    // let mut store: Vec<Vects> = Vec::new();
     let chunk = "Hello this is a test chunk".to_string();
     let chunk2 = "Hello this is a second chunk".to_string();
+
+    let mut store = VectorStore::new();
 
     let v1 = vec![
         -0.07354960337397,
@@ -39,7 +42,7 @@ fn main() {
     match Vects::new(&store, 10, v1, chunk) {
         Ok(v) => {
             println!("Vector with id {} created", v.id);
-            store.push(v);
+            &store.push(v);
         }
         Err(e) => {
             println!("Erorr creating the vector: {e:?}");
@@ -57,13 +60,28 @@ fn main() {
         }
     };
 
-    let distance = euclidean_distance(&store[0], &store[1]);
-    let dot_prod = dot_product(&store[0], &store[1]);
-    let cosine_dist = cosine_similarity(&store[0], &store[1]);
-    println!("DB: {:?}", &store);
+    let vec1 = match store.get_by_id(1) {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Error {e}");
+            return;
+        }
+    };
+
+    let vec2 = match store.get_by_id(2) {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Error {e}");
+            return;
+        }
+    };
+
+    let distance = euclidean_distance(vec1, vec2);
+    let dot_prod = dot_product(vec1, vec2);
+    let cosine_sim = cosine_similarity(vec1, vec2);
     println!("euc dist: {distance:?}");
-    println!("cos dist: {cosine_dist:?}");
+    println!("cos dist: {cosine_sim:?}");
     println!("dot: {dot_prod:?}");
-    let v = &store.iter().find(|v| v.id == 2).unwrap();
-    // println!("{v:?}");
+    store.remove_by_id(2).unwrap();
+    println!("{store:?}");
 }

@@ -8,7 +8,7 @@
 ### In mem storage
 - [x] Vector storage with IDs (kinda, very basic)
 - [x] Insert with ID generation (same)
-- [ ] Delete by ID
+- [x] Delete by ID
 - [x] Retrieve by ID
 - [ ] CRUD tests
 

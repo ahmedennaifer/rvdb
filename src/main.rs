@@ -60,28 +60,22 @@ fn main() {
         }
     };
 
-    let vec1 = match store.get_by_id(1) {
-        Ok(v) => v,
-        Err(e) => {
-            println!("Error {e}");
-            return;
-        }
-    };
-
-    let vec2 = match store.get_by_id(2) {
-        Ok(v) => v,
-        Err(e) => {
-            println!("Error {e}");
-            return;
-        }
-    };
-
+    let vec1 = store.get_by_id(1).unwrap();
+    let vec2 = store.get_by_id(2).unwrap();
     let distance = euclidean_distance(vec1, vec2);
     let dot_prod = dot_product(vec1, vec2);
     let cosine_sim = cosine_similarity(vec1, vec2);
+
     println!("euc dist: {distance:?}");
     println!("cos dist: {cosine_sim:?}");
     println!("dot: {dot_prod:?}");
+
+    println!("=============BEFORE RM=============");
+
+    println!("{store:?}");
     store.remove_by_id(2).unwrap();
+
+    println!("=============AFTER RM==============");
+
     println!("{store:?}");
 }

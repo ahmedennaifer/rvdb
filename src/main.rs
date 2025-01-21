@@ -36,13 +36,26 @@ fn main() {
         0.31444252046744164,
     ];
 
-    if let Ok(vector) = Vects::new(&vec![], 10, v1, chunk) {
-        store.push(vector);
-    }
-
-    if let Ok(vector) = Vects::new(&vec![], 10, v2, chunk2) {
-        store.push(vector);
-    }
+    match Vects::new(&store, 10, v1, chunk) {
+        Ok(v) => {
+            println!("Vector with id {} created", v.id);
+            store.push(v);
+        }
+        Err(e) => {
+            println!("Erorr creating the vector: {e:?}");
+            return;
+        }
+    };
+    match Vects::new(&store, 10, v2, chunk2) {
+        Ok(v) => {
+            println!("Vector with id {} created", v.id);
+            store.push(v);
+        }
+        Err(e) => {
+            println!("Error creating the vector: {e:?}");
+            return;
+        }
+    };
 
     let distance = euclidean_distance(&store[0], &store[1]);
     let dot_prod = dot_product(&store[0], &store[1]);

@@ -33,7 +33,7 @@
 - [ ] Memory metrics
 - [ ] Performance reports
 
-## Phase 2: REST API
+## REST API
 - [ ] HTTP server
 - [ ] Insert endpoint
 - [ ] Retrieve endpoint
@@ -49,6 +49,7 @@
 ## Optimization?
 ### Profiling
 - [ ] Memory and CPU  profiling
+- [ ] Query latency 
 - [ ] ?
 
 ### Improvements
@@ -59,12 +60,6 @@
 
 ## Future
 - HNSW index
-- Compression
-- Disk storage
-- Auth
 - Clustering
-- Advanced queries
 - Monitoring
 - Backup/recovery
-- Advanced filtering
-- Versioning

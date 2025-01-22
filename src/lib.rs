@@ -1,3 +1,3 @@
-pub mod metrics;
+pub mod ops;
 pub mod store;
 pub mod vector;

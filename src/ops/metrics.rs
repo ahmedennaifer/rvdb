@@ -1,4 +1,4 @@
-use crate::vector::Vects;
+use crate::vector::vector::Vects;
 
 pub fn euclidean_distance(v1: &Vects, v2: &Vects) -> f32 {
     v1.embeddings

@@ -14,7 +14,7 @@
 
 ### Search
 - [ ] Linear nearest neighbor
-- [ ] k-nearest neighbors
+- [ ] k-nearest neighbors (naive)
 - [ ] Metadata filtering
 - [ ] Search sorting
 - [ ] Performance tests

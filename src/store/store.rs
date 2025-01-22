@@ -1,6 +1,5 @@
-use crate::metrics::cosine_similarity;
-use crate::vector::Vects;
-use std::{borrow::Borrow, error::Error};
+use crate::ops::metrics::cosine_similarity;
+use crate::vector::vector::Vects;
 
 #[derive(Debug)]
 pub struct VectorStore {

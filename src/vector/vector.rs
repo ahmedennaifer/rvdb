@@ -1,4 +1,4 @@
-use crate::store::*;
+use crate::store::store::*;
 
 #[derive(Debug, Clone)]
 pub struct Vects {

@@ -1,13 +1,8 @@
-mod metrics;
-mod store;
-mod vector;
-
-use crate::metrics::*;
-use crate::store::VectorStore;
-use crate::vector::Vects;
+use rvdb::ops::metrics::{cosine_similarity, dot_product, euclidean_distance};
+use rvdb::store::store::VectorStore;
+use rvdb::vector::vector::Vects;
 
 fn main() {
-    // let mut store: Vec<Vects> = Vec::new();
     let chunk = "Hello this is a test chunk".to_string();
     let chunk2 = "Hello this is a second chunk".to_string();
 
@@ -66,9 +61,6 @@ fn main() {
     let dot_prod = dot_product(vec1, vec2);
     let cosine_sim = cosine_similarity(vec1, vec2);
 
-    // println!("euc dist: {distance:?}");
-    // println!("cos dist: {cosine_sim:?}");
-    // println!("dot: {dot_prod:?}");
     let v3 = vec![
         -0.363884,
         -0.2468885,

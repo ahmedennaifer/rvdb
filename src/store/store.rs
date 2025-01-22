@@ -49,4 +49,18 @@ impl VectorStore {
         res.truncate(top_k as usize);
         res
     }
+    pub fn search_by_keyword(&self, keyword: String) -> Result<Vec<&Vects>, String> {
+        let hit: Vec<&Vects> = self
+            .vectors
+            .iter()
+            .filter(|v| v.chunk.contains(&keyword))
+            .collect();
+
+        if hit.is_empty() {
+            Err(format!("No matches found for keyword: {}", &keyword))
+        } else {
+            println!("Found {} hits for keyword {}", hit.len(), &keyword);
+            Ok(hit)
+        }
+    }
 }

@@ -76,5 +76,6 @@ fn main() {
     let v3_chunk = "Lorem ipsum".to_string();
     let query = Vects::new(&store, 10, v3, v3_chunk).unwrap();
     let res = store.k_nearest_neighbor(&query, 2);
-    println!("{res:?}");
+    let hit = store.search_by_keyword("test".to_string()).unwrap();
+    println!("{hit:?}");
 }

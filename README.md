@@ -16,7 +16,7 @@
 - [ ] Linear nearest neighbor
 - [x] k-nearest neighbors (naive)
 - [ ] Metadata filtering
-- [ ] Search sorting
+- [x] Search sorting
 - [ ] Performance tests
 
 ### Persistence or RocksDB?
